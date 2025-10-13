@@ -1,0 +1,13 @@
+DirectoryIndex public/index.php
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Laisse passer les fichiers/dossiers existants
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Fallback vers le front controller Symfony
+  RewriteRule . public/index.php [L]
+</IfModule>
